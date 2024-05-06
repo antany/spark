@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+	compileOnly 'org.apache.spark:spark-sql_2.13:3.5.1'
+	compileOnly 'com.globalmentor:hadoop-bare-naked-local-fs:0.1.0'
+	
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'ca.antany.spark.learning.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
